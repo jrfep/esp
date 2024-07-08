@@ -10,7 +10,7 @@ execute:
 
 website:
   title: "./jrfep"
-  repo-url: https://github.com/jrfep/jrfep.github.io
+  repo-url: https://github.com/jrfep/esp
   repo-branch: mostly-harmless
   repo-actions: [edit, issue]
   navbar:
@@ -18,7 +18,7 @@ website:
     type: inverse
     left:
       - text: "Ciencia y academia"
-        icon: hello
+        icon: bank
         menu:
           - text: "Mis publicaciones"
             href: rzrch/my-publications.qmd
@@ -31,16 +31,19 @@ website:
           - text: "Eventos"
             href: /mimundo/evnts
       - text: "Biodiversidad"
+        icon: binoculars
         menu:
           - text: "Mis ecosistemas favoritos"
           - text: "Mis especies favoritas"
       - text: " Homo faber"
+        icon: gear
         menu: 
           - text: "Proyectos reproducibles"
             href: rzrch/my-osfr-projects.qmd
           - text: "Repositorios / código"
             href: rzrch/my-github-repos.qmd
       - text: "Homo ludens"
+        icon: balloon
         menu:
           - text: "Mi mundo"
             href: /mimundo/
@@ -52,6 +55,14 @@ website:
           - text: "Todos los nombres"
             href: j4fun/blog_CNE_nombres_Venezuela.Rmd
     right:
+      - icon: folder-symlink
+        menu:
+          - text: "Presentación"
+            icon: projector
+            href: "https://jrfep.github.io/"
+          - text: "switch to English"
+            icon: braces-asterisk
+            href: "https://jrfep.github.io/eng/"
       - text: "How to..."
         icon: question
         menu:
