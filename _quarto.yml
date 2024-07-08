@@ -1,0 +1,67 @@
+project:
+  type: website
+  output-dir: docs
+  resources: 
+    - "lgrs/img/"
+    - "evnts/img/"
+
+execute:
+  freeze: auto
+
+website:
+  title: "./jrfep"
+  repo-url: https://github.com/jrfep/jrfep.github.io
+  repo-branch: mostly-harmless
+  repo-actions: [edit, issue]
+  navbar:
+    title: "J.R. Ferrer-Paris"
+    type: inverse
+    left:
+      - text: "Ciencia y academia"
+        icon: hello
+        menu:
+          - text: "Mis publicaciones"
+            href: rzrch/my-publications.qmd
+          - rzrch/credit.qmd
+          - rzrch/impact.qmd
+          - text: "Mis pre-prints"
+            href: rzrch/pre-prints.qmd
+          - text: "Productos científicos"
+            href: rzrch/research-outputs.qmd
+          - text: "Eventos"
+            href: /mimundo/evnts
+      - text: "Biodiversidad"
+        menu:
+          - text: "Mis ecosistemas favoritos"
+          - text: "Mis especies favoritas"
+      - text: " Homo faber"
+        menu: 
+          - text: "Proyectos reproducibles"
+            href: rzrch/my-osfr-projects.qmd
+          - text: "Repositorios / código"
+            href: rzrch/my-github-repos.qmd
+      - text: "Homo ludens"
+        menu:
+          - text: "Mi mundo"
+            href: /mimundo/
+          - text: "Futbol"
+            href: j4fun/blog_LaLiga_FinalTemp2019.qmd
+          - text: "Ulysses"
+            icon: book
+            href: j4fun/ulysses.qmd
+          - text: "Todos los nombres"
+            href: j4fun/blog_CNE_nombres_Venezuela.Rmd
+    right:
+      - text: "How to..."
+        icon: question
+        menu:
+          - text: "(re-)create this site"
+            href: how2/how-to-site.qmd
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    link-external-icon: false
+    link-external-newwindow: true
+lang: es 
