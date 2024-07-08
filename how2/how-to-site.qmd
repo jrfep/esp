@@ -7,18 +7,43 @@ editor_options:
 
 ## No place like home
 
-This is a test of a personal website for [jrfep](https://jrfep.github.io/).
+This is a a personal website for ***jrfep***, and it consists of multiple repositories. 
 
-These instructions are in English, but this site has content in multiple languages... I know it is confusing, but this is how I work. If you require clarifications please open an issue or send me a message. 
+### How to make an entrance
 
-All files are available in a [GitHub repository](https://github.com/jrfep/jrfep.github.io).  The `mostly-harmless` branch uses [Quarto](https://quarto.org/docs/websites/) to build the site.
+I created a [presentation](https://jrfep.github.io/) using [Reveal.js](https://revealjs.com) and placed it in my personal github repo: <https://github.com/jrfep/jrfep.github.io>. The README of that repo contains instruction for re-creating the intro presentation.
 
+:::{.aside}
+This now sits in the `alpha-centaury` branch. Older versions of my site are available in other branches.
+
+
+My [other branch](https://github.com/jrfep/jrfep.github.io/tree/jekyll) uses Jekyll (but I gave up on that some time ago, so do not expect any updates).
+
+I [also tried](https://github.com/jrfep/jrfep.github.io/tree/mrhyde) Rmarkdown for some time, might get back to that if this one does not work. 
+
+I was tempted to create a multi-lingual site using [babelquarto](https://github.com/ropensci-review-tools/babelquarto):
+
+```{r}
+#| eval: false
+install.packages('babelquarto', repos = c('https://ropensci.r-universe.dev', 'https://cloud.r-project.org'))
+```
+
+But it was a short-lived experiment. I think it could work for simple sites, but would require more tweaks to make it work with my current site. 
+:::
+
+### Multilingual
+
+As you can read (or not), these instructions are in English, but this site has content in multiple languages... I know it is confusing, but this is how I work. If you require clarifications please open an issue or send me a message. 
+
+After much experimentation, I finally decided to open independent repos for my [Spanish](https://github.com/jrfep/esp) and [English](https://github.com/jrfep/eng) content. 
+
+Both repos use [Quarto](https://quarto.org/docs/websites/) to build the sub-sites, and they are only connected by external links.
 
 ## Libraries
 
 To manage and update the version of libraries that we need, I used `renv` for some iterations, but it was complex to keep version across machines and different OSs...
 
-When we use `renv` we need to run different commands, until all the changes have been synchronised[^1] :
+When we use `renv` we need to run different commands, until all the changes have been synchronised[^1]:
 
 ```{r}
 #| eval: false
@@ -65,20 +90,6 @@ quarto preview
 
 If this work, we can just `git add`, `git commit` and `git push` it to the repo and see the changes!
 
-## Alternatives
-
-My [other branch](https://github.com/jrfep/jrfep.github.io/tree/jekyll) uses Jekyll (but I gave up on that some time ago, so do not expect any updates).
-
-I [also tried](https://github.com/jrfep/jrfep.github.io/tree/mrhyde) Rmarkdown for some time, might get back to that if this one does not work. 
-
-I was tempted to create a multi-lingual site using [babelquarto](https://github.com/ropensci-review-tools/babelquarto):
-
-```{r}
-#| eval: false
-install.packages('babelquarto', repos = c('https://ropensci.r-universe.dev', 'https://cloud.r-project.org'))
-```
-
-But it was a short-lived experiment. I think it could work for simple sites, but would require more tweaks to make it work with my current site. 
 
 ## Font Awesome
 
@@ -90,16 +101,42 @@ Switch to the repository folder and checkout the git branch we are working on, a
 quarto install extension quarto-ext/fontawesome
 ```
 
-Now I can use `{{{< fa smile >}}}` in the text and get a {{< fa smile >}}, or `{{{< fa lemon >}}}` and get a {{< fa lemon >}}.
+:::{.aside}
+But I am using bootstrap icon in this site, so I did not activate this extension here.
+:::
+
+Use `{{{< fa smile >}}}` or `{{{< fa lemon >}}}` in the text to show the fonts. 
 
 ## Just in case
 
 ![ [Stand back, I know regular expressions.](https://xkcd.com/208/)](https://imgs.xkcd.com/comics/regular_expressions.png)
 
 
-[^1]: Yes, I use this [weird spelling...](https://english.stackexchange.com/questions/230494/should-i-always-use-the-ised-ending-for-uk-english-and-the-ized-for-us)
+[^1]: Yes, [I know...](https://english.stackexchange.com/questions/230494/should-i-always-use-the-ised-ending-for-uk-english-and-the-ized-for-us)
 
 ## Prepare data for some pages
+
+### Bibliography
+
+For the bibliography, I downloaded one `csl` as a base style:
+
+```{.bash}
+cd bibteX
+wget 'https://www.zotero.org/styles/journal-and-proceedings-of-the-royal-society-of-new-south-wales?source=1' --output-document=my.csl
+```
+
+Modify sort order of the bibliography (not the citation...):
+
+```{.xml}
+<bibliography hanging-indent="true" entry-spacing="0">
+    <sort>
+      <key variable="issued" sort="descending"/>
+      <key macro="author"/>
+    </sort>
+  ...
+```
+
+And voilà!
 
 ### OSF data
 
@@ -182,59 +219,25 @@ magick logo_NeoMapas_p.gif  -resize 100x148  resize_logo.gif
 
 ### Photos from Flickr
 
-So, I think I need some photos in my website, and I have a Flickr account, and I use R, there should be a library that...
+> So, I think I need some photos in my website, and I have a Flickr account, and I use R, there should be a library that...
 
-Oh yes! found it!
+Yes, there is!. And I actually wrote a [blog-entry](https://jrfep.quarto.pub/the-spatial-one/posts/foto-collection.html) about this.
 
-<https://koki25ando.github.io/FlickrAPI/>
-
-```{r}
-#| eval: false
-install.packages("FlickrAPI")
-```
-
-Now I need a [Flickr API key](https://www.flickr.com/services/developer/) 
-
-```{r}
-#| eval: false
-library(FlickrAPI)
-setFlickrAPIKey(api_key = "YOUR_API_KEY_HERE", install = TRUE)
-```
-
-And finally, it works!
-
-Let's now query our photos (up to 1000) and save the information in a RDS file:
-
-```{r}
-#| eval: false
-here::i_am("how2/how-to-site.qmd")
-library(FlickrAPI)
-library(foreach)
-library(dplyr)
-readRenviron("~/.Renviron") # read the API key
-here::i_am("how2/how-to-site.qmd")
-photos <- foreach(u=c("jferrer","jferrer","199798864@N08"), i=c(1,2,1),.combine = "bind_rows") %do% {
-  getPhotos(user_id = u, img_size="m", extras = c("description","owner_name",
-  "url_m"), per_page=1000, page=i)
-}
-
-dim(photos)
-
-file_name <- here::here("data","flickr-photos.rds")
-saveRDS(file=file_name, photos)
-```
 
 ### Photos from google 
 
-This is a trial-and-error test of reading my photos from a google account, based on [some blogs](https://www.listendata.com/2021/10/r-wrapper-for-google-photos-api.html), [medium posts](https://max-coding.medium.com/loading-photos-and-metadata-using-google-photos-api-with-python-7fb5bd8886ef) and [stack overflow posts](https://stackoverflow.com/questions/50573196/access-google-photo-api-with-python-using-google-api-python-client):
+This took me a bit longer to figure out. Basically:
 
 1. I created a project in google cloud, 
 2. enabled Photos Library API (not sure if this is relevant here),
 3. configured a simple consent page, 
 4. created a OAuth 2.0 client ID and downloaded the json file.
 5. added `GC_PROJECT_EMAIL` and `GC_PROJECT_CRED_JSON` to my .Renviron file
+6. Then wrote some lines of code to do the authentication steps with library `gargle` and the queries with library `httr`.
 
-Then I ran these lines of code
+I wrote a detailed, step-by-step [explanation here](https://jrfep.quarto.pub/explicado/Rcode/google-photos.html).
+
+This is the code...
 
 ```{r}
 #| eval: false
@@ -335,7 +338,6 @@ file_name <- here::here("data","google-photos.rds")
 saveRDS(file=file_name, photos)
 ```
 
-This downloads the information, but it does not allow to share the links to the photos (they become defunct after the session is closed). It seems that the way forward would be to select existing files, [create shareable albums with the API](https://developers.google.com/photos/library/guides/share-media#rest) and download the shareableURL of the album and photos. Still needs some testing...
 
 ### Galleries with `pixture`
 
@@ -346,24 +348,3 @@ I am experimenting with the [pixture package](https://www.royfrancis.com/pixture
 install.packages(c("htmlwidgets","shiny","remotes"))
 remotes::install_github('royfrancis/pixture')
 ```
-
-### Bibliography
-
-Download one `csl` as a base style
-
-```{.bash}
-cd bibteX
-wget 'https://www.zotero.org/styles/journal-and-proceedings-of-the-royal-society-of-new-south-wales?source=1' --output-document=my.csl
-```
-
-Modify sort order of the bibliography (not the citation...):
-
-```{.xml}
-<bibliography hanging-indent="true" entry-spacing="0">
-    <sort>
-      <key variable="issued" sort="descending"/>
-      <key macro="author"/>
-    </sort>
-  ...
-```
-
