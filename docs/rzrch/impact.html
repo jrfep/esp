@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -79,7 +79,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Sin resultados",
     "search-matching-documents-text": "documentos encontrados",
@@ -88,12 +94,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "resultado adicional en este documento",
     "search-more-matches-text": "resultados adicionales en este documento",
     "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancelar",
     "search-submit-button-title": "Enviar",
     "search-label": "Buscar"
   }
 }</script>
-
 <script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="../site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
 <script src="../site_libs/datatables-binding-0.31/datatables.js"></script>
@@ -112,9 +118,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">J.R. Ferrer-Paris</span>
     </a>
@@ -126,40 +132,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ciencia-y-academia" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ciencia-y-academia" role="button" data-bs-toggle="dropdown" aria-expanded="false">
       <i class="bi bi-bank" role="img">
 </i> 
  <span class="menu-text">Ciencia y academia</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-ciencia-y-academia">    
         <li>
-    <a class="dropdown-item" href="../rzrch/my-publications.html" rel="" target="">
+    <a class="dropdown-item" href="../rzrch/my-publications.html">
  <span class="dropdown-text">Mis publicaciones</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../rzrch/credit.html" rel="" target="">
+    <a class="dropdown-item" href="../rzrch/credit.html">
  <span class="dropdown-text">Mis contribuciones académicas</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../rzrch/impact.html" rel="" target="">
+    <a class="dropdown-item" href="../rzrch/impact.html">
  <span class="dropdown-text">Impacto de mis publicaciones</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../rzrch/pre-prints.html" rel="" target="">
+    <a class="dropdown-item" href="../rzrch/pre-prints.html">
  <span class="dropdown-text">Mis pre-prints</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../rzrch/research-outputs.html" rel="" target="">
+    <a class="dropdown-item" href="../rzrch/research-outputs.html">
  <span class="dropdown-text">Productos científicos</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../mimundo/evnts" rel="" target="">
+    <a class="dropdown-item" href="../mimundo/evnts">
  <span class="dropdown-text">Eventos</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-biodiversidad" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-biodiversidad" role="button" data-bs-toggle="dropdown" aria-expanded="false">
       <i class="bi bi-binoculars" role="img">
 </i> 
  <span class="menu-text">Biodiversidad</span>
@@ -170,44 +176,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-homo-faber" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-homo-faber" role="button" data-bs-toggle="dropdown" aria-expanded="false">
       <i class="bi bi-gear" role="img">
 </i> 
  <span class="menu-text">Homo faber</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-homo-faber">    
         <li>
-    <a class="dropdown-item" href="../rzrch/my-osfr-projects.html" rel="" target="">
+    <a class="dropdown-item" href="../rzrch/my-osfr-projects.html">
  <span class="dropdown-text">Proyectos reproducibles</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../rzrch/my-github-repos.html" rel="" target="">
+    <a class="dropdown-item" href="../rzrch/my-github-repos.html">
  <span class="dropdown-text">Repositorios / código</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-homo-ludens" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-homo-ludens" role="button" data-bs-toggle="dropdown" aria-expanded="false">
       <i class="bi bi-balloon" role="img">
 </i> 
  <span class="menu-text">Homo ludens</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-homo-ludens">    
         <li>
-    <a class="dropdown-item" href="../mimundo/" rel="" target="">
+    <a class="dropdown-item" href="../mimundo/">
  <span class="dropdown-text">Mi mundo</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../j4fun/blog_LaLiga_FinalTemp2019.html" rel="" target="">
+    <a class="dropdown-item" href="../j4fun/blog_LaLiga_FinalTemp2019.html">
  <span class="dropdown-text">Futbol</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../j4fun/ulysses.html" rel="" target=""><i class="bi bi-book" role="img">
+    <a class="dropdown-item" href="../j4fun/ulysses.html"><i class="bi bi-book" role="img">
 </i> 
  <span class="dropdown-text">Ulysses</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../j4fun/blog_CNE_nombres_Venezuela.html" rel="" target="">
+    <a class="dropdown-item" href="../j4fun/blog_CNE_nombres_Venezuela.html">
  <span class="dropdown-text">Todos los nombres</span></a>
   </li>  
     </ul>
@@ -215,41 +221,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-folder-symlink" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-folder-symlink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
       <i class="bi bi-folder-symlink" role="img">
 </i> 
  <span class="menu-text"></span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-folder-symlink">    
         <li>
-    <a class="dropdown-item" href="https://jrfep.github.io/" rel="" target=""><i class="bi bi-projector" role="img">
+    <a class="dropdown-item" href="https://jrfep.github.io/"><i class="bi bi-projector" role="img">
 </i> 
  <span class="dropdown-text">Presentación</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://jrfep.github.io/eng/" rel="" target=""><i class="bi bi-braces-asterisk" role="img">
+    <a class="dropdown-item" href="https://jrfep.github.io/eng/"><i class="bi bi-braces-asterisk" role="img">
 </i> 
  <span class="dropdown-text">switch to English</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-how-to..." role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-how-to..." role="button" data-bs-toggle="dropdown" aria-expanded="false">
       <i class="bi bi-question" role="img">
 </i> 
  <span class="menu-text">How to…</span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-how-to...">    
         <li>
-    <a class="dropdown-item" href="../how2/how-to-site.html" rel="" target="">
+    <a class="dropdown-item" href="../how2/how-to-site.html">
  <span class="dropdown-text">(re-)create this site</span></a>
   </li>  
     </ul>
   </li>
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -264,7 +270,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#impacto-social" id="toc-impacto-social" class="nav-link active" data-scroll-target="#impacto-social">Impacto social</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/jrfep/esp/edit/mostly-harmless/rzrch/impact.qmd" class="toc-action">Editar esta página</a></p><p><a href="https://github.com/jrfep/esp/issues/new" class="toc-action">Informar de un problema</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/jrfep/esp/edit/mostly-harmless/rzrch/impact.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/jrfep/esp/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -290,7 +296,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <p>Existen muchas formas de medir el impacto de nuestras actividades científicas. Algunas iniciativas se basan en indicadores cuantitativos derivados de contadores y estadísticas de uso de varias redes sociales y académicas.</p>
 <p>Uno de los más famosos proveedores es PlumX.</p>
@@ -323,7 +331,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Pero probablemente sea más informativa una presentación gráfica por publicación:</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="impact_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="864"></p>
+<div>
+<figure class="figure">
+<p><img src="impact_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="864"></p>
+</figure>
+</div>
 </div>
 </div>
 <section id="impacto-social" class="level2">
@@ -332,7 +344,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Esta es una lista de mis publicaciones que tienen citas en algún instrumento de políticas globales, según los valores registrados por PlumX.</p>
 <div class="cell">
 <div class="cell-output-display">
-
 <div class="datatables html-widget html-fill-item" id="htmlwidget-a942fd7070ecd748b16b" style="width:100%;height:auto;"></div>
 <script type="application/json" data-for="htmlwidget-a942fd7070ecd748b16b">{"x":{"filter":"none","vertical":false,"data":[["<a href='https://doi.org/10.1016/j.biocon.2013.07.032'>10.1016/j.biocon.2013.07.032<\/a>","<a href='https://doi.org/10.1016/j.biocon.2020.108834'>10.1016/j.biocon.2020.108834<\/a>","<a href='https://doi.org/10.1016/j.prevetmed.2016.11.023'>10.1016/j.prevetmed.2016.11.023<\/a>","<a href='https://doi.org/10.1038/s41586-022-05318-4'>10.1038/s41586-022-05318-4<\/a>","<a href='https://doi.org/10.1111/cobi.14169'>10.1111/cobi.14169<\/a>","<a href='https://doi.org/10.1111/conl.12623'>10.1111/conl.12623<\/a>","<a href='https://doi.org/10.1111/conl.12666'>10.1111/conl.12666<\/a>","<a href='https://doi.org/10.1111/conl.12680'>10.1111/conl.12680<\/a>","<a href='https://doi.org/10.1371/journal.pone.0063570'>10.1371/journal.pone.0063570<\/a>","<a href='https://doi.org/10.1371/journal.pone.0110236'>10.1371/journal.pone.0110236<\/a>","<a href='https://doi.org/10.2305/iucn.ch.2020.13.en'>10.2305/iucn.ch.2020.13.en<\/a>"],["<a href='https://plu.mx/plum/a/policy_citation?doi=10.1016/j.biocon.2013.07.032'>PlumX metrics<\/a>","<a href='https://plu.mx/plum/a/policy_citation?doi=10.1016/j.biocon.2020.108834'>PlumX metrics<\/a>","<a href='https://plu.mx/plum/a/policy_citation?doi=10.1016/j.prevetmed.2016.11.023'>PlumX metrics<\/a>","<a href='https://plu.mx/plum/a/policy_citation?doi=10.1038/s41586-022-05318-4'>PlumX metrics<\/a>","<a href='https://plu.mx/plum/a/policy_citation?doi=10.1111/cobi.14169'>PlumX metrics<\/a>","<a href='https://plu.mx/plum/a/policy_citation?doi=10.1111/conl.12623'>PlumX metrics<\/a>","<a href='https://plu.mx/plum/a/policy_citation?doi=10.1111/conl.12666'>PlumX metrics<\/a>","<a href='https://plu.mx/plum/a/policy_citation?doi=10.1111/conl.12680'>PlumX metrics<\/a>","<a href='https://plu.mx/plum/a/policy_citation?doi=10.1371/journal.pone.0063570'>PlumX metrics<\/a>","<a href='https://plu.mx/plum/a/policy_citation?doi=10.1371/journal.pone.0110236'>PlumX metrics<\/a>","<a href='https://plu.mx/plum/a/policy_citation?doi=10.2305/iucn.ch.2020.13.en'>PlumX metrics<\/a>"],[14,23,104,90,3,63,52,24,38,20,null],[2,2,10,4,2,7,14,6,2,3,48]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>DOI<\/th>\n      <th>Plumx<\/th>\n      <th>Academic citations<\/th>\n      <th>Policy citations<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","order":[3,"desc"],"pageLength":25,"columnDefs":[{"className":"dt-right","targets":[2,3]},{"name":"DOI","targets":0},{"name":"Plumx","targets":1},{"name":"Academic citations","targets":2},{"name":"Policy citations","targets":3}],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
@@ -474,10 +485,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -487,8 +515,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -501,6 +538,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -544,6 +700,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -569,6 +726,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -626,20 +809,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // target, if specified
-          link.setAttribute("target", "_blank");
-      }
-    }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Ejecutar el código</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
@@ -848,4 +1017,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/jrfep/esp/edit/mostly-harmless/rzrch/impact.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li><li><a href="https://github.com/jrfep/esp/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li></ul></div></div></div></footer></body></html>
