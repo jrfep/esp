@@ -1,6 +1,7 @@
 ---
 title: "Impacto de mis publicaciones"
 date: 10 Jun 2024
+update-date: 7 Nov 2024
 editor_options: 
   chunk_output_type: console
 execute: 
@@ -31,13 +32,16 @@ library(magick)
 ```{r}
 #| label: icons
 
-# I found these icons to add to the plot
-icons_url <- "https://plumanalytics.com/wp-content/uploads/2015/07/"
-icons <- c(citation = "Metrics_Icons_Citations-150x150.png",
-  capture =  "Metrics_Icons_Captures-150x150.png",
-  mention = "Metrics_Icons_Mentions-150x150.png",
+# Original location of the icons
+#icons_url <- "https://plumanalytics.com/wp-content/uploads/2015/07/"
+#alternative version at > https://www.jneurophilosophy.com/index.php/jnp/announcement/view/11
+# made a local copy here:
+icons_url <- here::here("data","plumx")
+icons <- c(citation = "Metrics_Icons_Citations.png",
+  capture =  "Metrics_Icons_Captures.png",
+  mention = "Metrics_Icons_Mentions.png",
   usage = "Metrics_Icons_Usage.png",
-  socialMedia = "Metrics_Icons_SocialMedia-150x150.png")
+  socialMedia = "Metrics_Icons_socialMedia.png")
 
 pngs <- sprintf("%s/%s",icons_url, icons)
 names(pngs) <- names(icons)
