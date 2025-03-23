@@ -1,0 +1,90 @@
+---
+title: "Mis especies favoritas"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+execute: 
+  echo: false
+  message: false
+  warning: false
+format:
+  html:
+    code-tools: 
+      source: true
+      caption: "Código para cálculos y figuras"
+---
+
+```{r}
+library(rinat)
+library(dplyr)
+library(lubridate)
+library(magick)
+library(foreach)
+here::i_am("taxa.qmd")
+inat_obs_data <- here::here("data", "inat-obs.rds")
+inat_obs_img <- here::here("img", "inat-collage.png")
+```
+
+
+```{r}
+if (file.exists(inat_obs_data)) {
+    user_obs <- readRDS(inat_obs_data)
+} else {
+    user_obs <- get_inat_obs_user("NeoMapas",maxresults = 5000) |> 
+        mutate(dts=date(datetime), year=year(dts), month=month(dts))
+    saveRDS(user_obs, inat_obs_data)
+}
+```
+
+```{r}
+first_obs <- user_obs |> arrange(dts) |> slice_head(n=1) |> pull(dts)
+tiempo_inat <- interval(first_obs,lubridate::today() )
+years_inat <- sprintf("%0.1f",time_length(tiempo_inat, 'years'))
+```
+
+Mi primera observación en iNaturalist fue hecha en `{r} first_obs`, o sea, que para el día de hoy tengo `{r} years_inat` años contribuyendo a esta plataforma. 
+
+He aquí un collage de mis observaciones a lo largo de los años:
+
+```{r}
+if (file.exists(inat_obs_img)) {
+    iNat_collage <- image_read(inat_obs_img)
+} else {
+    YearsRowImages <- foreach (slc_year=rev(sort(unique(user_obs$year))), .combine=c) %do% {
+        ejemplos <- user_obs |> 
+            filter(year==slc_year, quality_grade == 'research') |>
+            mutate(seleccion=!duplicated(month)) |>
+            filter(seleccion) |>
+            arrange(month)
+        poxs <- foreach(j=1:nrow(ejemplos), .combine = c) %do% {
+            pix <- 
+                slice(ejemplos,j) |> 
+                #mutate(simage=gsub('medium', 'square',image_url)) |> # the square image has a lower resolution
+                pull(image_url) |>
+                image_read() |> 
+                image_resize(geometry_size_pixels(200)) |>
+                image_write('input.png')
+            system('magick input.png -gravity center \\( -size 150x150 xc:black -fill white -draw "circle 60 60 60 0" -alpha copy \\) -compose copyopacity -composite output.png')
+            pox <- image_read('output.png') |> image_trim()
+            mnm <- month.abb[slice(ejemplos,j) |> pull(month)]
+            pox_text <- image_annotate(pox, mnm, size=20,color='white', gravity='southeast', location = "+35+10 ")
+            return(pox_text)
+        }
+        rowImages <- image_append(poxs)
+        YearRowImages <- image_annotate(rowImages, sprintf("Year %s", slc_year), 
+                                        size = 25, gravity = "northwest", color = "white", #boxcolor = "pink",
+                                    degrees = -90, location = "-29+119 ") |> 
+                        image_annotate(sprintf("Year %s", slc_year), 
+                                        size = 25, gravity = "northwest", color = "black", #boxcolor = "pink",
+                                    degrees = -90, location = "-30+120 ")
+        return(YearRowImages)
+
+        }
+    iNat_collage <- image_append(YearsRowImages, stack = TRUE)
+    image_write(iNat_collage, path = inat_obs_img)
+}
+```
+
+```{r}
+iNat_collage
+```

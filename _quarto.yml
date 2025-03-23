@@ -37,6 +37,8 @@ website:
             icon: globe
             href: https://jrfep.quarto.pub/ecosystems-of-the-world
           - text: "Mis especies favoritas"
+            icon: flower1
+            href: taxa.qmd
       - text: " Homo faber"
         icon: gear
         menu: 

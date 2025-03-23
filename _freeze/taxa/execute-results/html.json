@@ -1,0 +1,17 @@
+{
+  "hash": "3f2f1e24a61d65e21c20c41eac1bced1",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Mis especies favoritas\"\noutput: html_document\neditor_options: \n  chunk_output_type: console\nexecute: \n  echo: false\n  message: false\n  warning: false\nformat:\n  html:\n    code-tools: \n      source: true\n      caption: \"Código para cálculos y figuras\"\n---\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n\n:::\n\n\n\n\nMi primera observación en iNaturalist fue hecha en 2004-08-29, o sea, que para el día de hoy tengo 20\\.6 años contribuyendo a esta plataforma. \n\nHe aquí un collage de mis observaciones a lo largo de los años:\n\n\n\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n::: {.cell-output-display}\n![](taxa_files/figure-html/unnamed-chunk-5-1.png){width=666}\n:::\n:::",
+    "supporting": [
+      "taxa_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
