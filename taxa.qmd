@@ -20,6 +20,7 @@ library(dplyr)
 library(lubridate)
 library(magick)
 library(foreach)
+library(kableExtra)
 here::i_am("taxa.qmd")
 inat_obs_data <- here::here("data", "inat-obs.rds")
 inat_obs_img <- here::here("img", "inat-collage.png")
@@ -42,7 +43,21 @@ tiempo_inat <- interval(first_obs,lubridate::today() )
 years_inat <- sprintf("%0.1f",time_length(tiempo_inat, 'years'))
 ```
 
-Mi primera observación en iNaturalist fue hecha en `{r} first_obs`, o sea, que para el día de hoy tengo `{r} years_inat` años contribuyendo a esta plataforma. 
+Realicé mi primera observación en iNaturalist el día `{r} first_obs`, o sea, que tengo `{r} years_inat` años contribuyendo a esta plataforma.
+
+
+
+```{r}
+user_obs |> 
+    group_by(year) |>
+    summarise(
+        `Meses con observaciones` = n_distinct(month),
+        `Días con observaciones` = n_distinct(dts),
+        `Número total de observaciones` = n()
+    ) |> kbl()
+
+```
+
 
 He aquí un collage de mis observaciones a lo largo de los años:
 
