@@ -43,7 +43,7 @@ tiempo_inat <- interval(first_obs,lubridate::today() )
 years_inat <- sprintf("%0.1f",time_length(tiempo_inat, 'years'))
 ```
 
-Realicé mi primera observación en iNaturalist el día `{r} first_obs`, o sea, que tengo `{r} years_inat` años contribuyendo a esta plataforma.
+Realicé mi primera observación en iNaturalist el día `{r} first_obs`, y durante mis `{r} years_inat` años contribuyendo a esta plataforma he añadido `{r} nrow(user_obs)` observaciones representando aproximadamente `{r} n_distinct(user_obs$species_guess)` taxones.
 
 
 
