@@ -15,7 +15,7 @@ here::i_am("data/plumx/plumx-download-and-preparation.qmd")
 bib1 <- ReadBib(here::here("bibTeX","peer-review.bibtex"), check = FALSE)
 
 CRediT_folder <- "data"
-credit <-read_excel(here::here(CRediT_folder, "CRediT-my-publications.xlsx"), 
+credit <-read_excel(here::here(CRediT_folder, "CRediT-my-publications-2026.xlsx"), 
                     "Contributions per pub") 
 dois <- credit |> filter(!is.na(doi)) |> pull(doi)
 
@@ -28,7 +28,7 @@ Now we run this to query plumx API (need to run this in the UNSW network to get 
 
 ```{bash}
 source ~/.Renviron
-
+cd data/plumx
 for doi in $(cat doi-list)
 do
   sdoi=query-$(echo $doi | sed -e s/\\//_/g).json

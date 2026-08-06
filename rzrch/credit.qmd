@@ -1,6 +1,7 @@
 ---
 title: "Mis contribuciones académicas"
 date: 10 Jun 2024
+date-modified: 5 Aug 2026
 editor_options: 
   chunk_output_type: console
 execute: 
@@ -25,7 +26,7 @@ library(stringr)
 
 here::i_am("rzrch/credit.qmd")
 CRediT_folder <- "data"
-credit <-read_excel(here::here(CRediT_folder, "CRediT-my-publications.xlsx"), 
+credit <-read_excel(here::here(CRediT_folder, "CRediT-my-publications-2026.xlsx"), 
                     "Contributions per pub") 
 ```
 
@@ -80,11 +81,12 @@ credit_summary <- credit |>
 ```
 
 ```{r}
+#| eval: true
 ttitle <- sprintf("Contribuciones a %s publicaciones.",
         {n_pubs_with_credit})
 stitle <- "Usando Contributor Roles Taxonomy (CRediT)"
-clrs <- c4a("hcl.yellow_blue", 3)
-txt_clr <- c(c4a_na("hcl.yellow_blue"), "whitesmoke")
+clrs <- c4a("parks.death_valley", 3, reverse=TRUE)
+txt_clr <- c(c4a_na("parks.death_valley"), "whitesmoke")
 
 ggplot(credit_summary) +
   geom_col(aes(y=Publications, x = Role, fill = Contribution)) +

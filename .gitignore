@@ -1,3 +1,4 @@
 /.quarto/
 _por-arreglar
 .~*
+**/*.quarto_ipynb
