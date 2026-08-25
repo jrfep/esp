@@ -14,19 +14,26 @@ library(jsonlite)
 here::i_am("data/plumx/plumx-download-and-preparation.qmd")
 bib1 <- ReadBib(here::here("bibTeX","peer-review.bibtex"), check = FALSE)
 
+bib2 <- data.frame(bib1)
+
 CRediT_folder <- "data"
 credit <-read_excel(here::here(CRediT_folder, "CRediT-my-publications-2026.xlsx"), 
                     "Contributions per pub") 
-dois <- credit |> filter(!is.na(doi)) |> pull(doi)
+dois <- unique(c(
+  credit |> filter(!is.na(doi)) |> pull(doi),
+  bib2 |> filter(!is.na(doi)) |> pull(doi)
+))
+
 
 conn <- file(here::here("data/plumx/","doi-list"), "w")
-writeLines(dois,conn)
+writeLines(unique(tolower(dois)),conn)
 close(conn)
 ```
 
 Now we run this to query plumx API (need to run this in the UNSW network to get access to the service, VPN is not enough):
 
 ```{bash}
+#| eval: false
 source ~/.Renviron
 cd data/plumx
 for doi in $(cat doi-list)
@@ -36,7 +43,7 @@ do
   then
       echo "skipping $doi"
   else
-      wget --output-document=${sdoi} https://api.elsevier.com/analytics/plumx/doi/${doi}?apiKey=${Elsevier_API}
+      wget --output-document=${sdoi} "https://api.elsevier.com/analytics/plumx/doi/${doi}?apiKey=${Elsevier_API}"
   fi
 done
 ```
@@ -71,7 +78,11 @@ Read files from folder and `map` function:
 
 plumx_folder <- here::here("data/plumx/")
 jsonFiles <- dir(plumx_folder, pattern = "json$", full.names = TRUE)
-PMX_ALL <- map(jsonFiles, readPlumxJson) |> bind_rows()
+PMX_ALL <- map(jsonFiles, readPlumxJson) |> 
+  bind_rows() |> 
+  left_join(bib2,by="doi")
+
+
 ```
 
 Save this to a folder:

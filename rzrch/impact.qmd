@@ -1,7 +1,7 @@
 ---
 title: "Impacto de mis publicaciones"
 date: 10 Jun 2024
-update-date: 7 Nov 2024
+update-date: 6 Aug 2026
 editor_options: 
   chunk_output_type: console
 execute: 
@@ -78,7 +78,6 @@ texts <- c("citation" = "citas académicas + impacto social (e.g. 'policy citati
 ```
 
 
-
 ```{r}
 #| warning: false
 #| message: false
@@ -86,7 +85,8 @@ here::i_am("rzrch/impact.qmd")
 rds_folder <- "data"
 
 PMX_ALL <- readRDS(here::here(rds_folder,"plumx_ALL.rds")) |>
-  mutate(doi = tolower(doi))
+  mutate(doi = tolower(doi)) |>
+  filter(!journal %in% "Therya")
 
 # PMX_ALL |>
 #  knitr::kable()
@@ -155,7 +155,6 @@ b5 <- plotBlock(PMX_ALL, "socialMedia", "Social Media", xpos=1.4, ypos=300, scl=
 ```
 
 
-
 ```{r}
 b6 <- ggdraw() + 
   draw_label(str_wrap("Valores de cinco categorías de indicadores medidos por PlumX para todas mis publicaciones.",20), 
@@ -181,7 +180,17 @@ plot_grid(
 
 Una forma de medir el impacto social es considerando las citas que reciben los artículos científicos en documentos de normativas y políticas nacionales o globales. 
 
-Esta es una lista de mis publicaciones que tienen citas en algún instrumento de políticas globales, según los valores registrados por PlumX.
+Esta es el total de mis publicaciones que tienen citas en algún instrumento de políticas globales, según los valores registrados por PlumX.
+
+```{r}
+PMX_ALL |> 
+  filter(!is.na(POLICY_CITED_BY_COUNT)) |> 
+  summarise(
+    `Total documents`=n(),
+    `Total policy citations`=sum(POLICY_CITED_BY_COUNT))|>
+  DT::datatable(rownames = FALSE)
+```
+
 
 ```{r}
 #| eval: false
@@ -191,15 +200,18 @@ PMX_ALL |> filter(!is.na(POLICY_CITED_BY_COUNT)) |> select(author_groups, POLICY
   geom_jitter(aes(y=POLICY_CITED_BY_COUNT,x=author_groups), width = 0.07, alpha=.35)
 ```
 
+En la siguiente tabla presento una lista detallada de estas publicaciones con los enlaces a sus perfiles en PlumX.
+
 ```{r}
 PMX_ALL |> 
   filter(!is.na(POLICY_CITED_BY_COUNT)) |> 
   transmute(
-    DOI = sprintf("<a href='https://doi.org/%1$s'>%1$s</a>", doi), 
+    DOI = sprintf("<a href='https://doi.org/%1$s'>%2$s</a>", doi, title), 
     Plumx = sprintf("<a href='https://plu.mx/plum/a/policy_citation?doi=%1$s'>PlumX metrics</a>", doi), 
             `Academic citations` = CITED_BY_COUNT, 
             `Policy citations` = POLICY_CITED_BY_COUNT) |>
   DT::datatable(rownames = FALSE, escape = FALSE,
     options = list(dom = 't', order = list(3, 'desc'), pageLength = 25))
 ```
+
 
